@@ -8,32 +8,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-@Table(name = "clients")
+@Table(name = "cars")
 @Entity
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Data
 @NoArgsConstructor
 @ToString
-public class Client extends IdEntity {
+public class Car extends IdEntity {
 
     @Column(name = "name", nullable = false)
     @NonNull
     private String name;
 
-    @Column(name = "second_name")
-    private String secondName;
-
-    @Column(name = "surname", nullable = false)
-    @NonNull
-    private String surname;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone_number", nullable = false, unique = true)
-    private String phoneNumber;
-
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "car")
     private List<Package> packages;
 
 }
