@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="courier-system">
+    <output-path>$PROJECT_DIR$/out/artifacts/courier-system.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="courier-system/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="courier-system" />
+          <element id="jpa-descriptors" facet="courier-system/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="postgresql-42.2.12" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
