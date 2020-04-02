@@ -24,9 +24,6 @@ public class Package extends IdEntity {
     @NonNull
     private Date registerDate = new Date();
 
-    @Column(name = "start_of_delivery_date")
-    private Date startOfDeliveryDate;
-
     @Column(name = "delivery_date")
     private Date deliveryDate;
 

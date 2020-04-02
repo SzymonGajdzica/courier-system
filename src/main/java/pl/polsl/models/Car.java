@@ -20,6 +20,10 @@ public class Car extends IdEntity {
     @NonNull
     private String name;
 
+    @Column(name = "in_use", nullable = false)
+    @NonNull
+    private Boolean inUse;
+
     @OneToMany(mappedBy = "car")
     private List<Package> packages;
 

@@ -17,11 +17,10 @@
           <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.1.1" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.12" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.12" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/client-system-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
-      </element>
+      <element id="directory" name="META-INF" />
       <element id="javaee-facet-resources" facet="courier-system/web/Web" />
     </root>
   </artifact>
