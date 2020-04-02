@@ -8,12 +8,9 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString
-public class TestView {
+public class ClientPost {
 
     @NonNull
-    private String title;
-
-    @NonNull
-    private String description;
+    private String name;
 
 }

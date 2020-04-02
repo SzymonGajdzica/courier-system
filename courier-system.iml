@@ -5,8 +5,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="client-system-db" value="7bb149ab-326f-493f-9ca1-0ce05fb76ece" />
           <factory-entry name="courier-system" />
-          <factory-entry name="courier-system-db" />
+          <factory-entry name="courier-system-db" value="7bb149ab-326f-493f-9ca1-0ce05fb76ece" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/java/META-INF/persistence.xml" />
@@ -42,5 +43,6 @@
     <orderEntry type="library" name="postgresql-42.2.12" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
     <orderEntry type="library" name="Maven: javax.ws.rs:javax.ws.rs-api:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
   </component>
 </module>

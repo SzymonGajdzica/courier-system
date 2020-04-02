@@ -8,12 +8,12 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString
-public class TestView {
+public class ClientView {
 
     @NonNull
-    private String title;
+    private Long id;
 
     @NonNull
-    private String description;
+    private String name;
 
 }

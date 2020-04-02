@@ -1,2 +1,2 @@
-# courier-system
+# client-system
 Simple backend application for couriers
