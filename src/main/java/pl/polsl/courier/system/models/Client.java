@@ -1,4 +1,4 @@
-package pl.polsl.models;
+package pl.polsl.courier.system.models;
 
 import lombok.*;
 
@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.LinkedList;
 import java.util.List;
 
 @Table(name = "clients")
@@ -34,6 +35,6 @@ public class Client extends IdEntity {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "client")
-    private List<Package> packages;
+    private List<Package> packages = new LinkedList<>();
 
 }

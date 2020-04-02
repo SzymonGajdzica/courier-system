@@ -1,4 +1,4 @@
-package pl.polsl.models;
+package pl.polsl.courier.system.models;
 
 import lombok.*;
 

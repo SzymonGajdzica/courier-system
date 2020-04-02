@@ -1,7 +1,7 @@
-package pl.polsl.services;
+package pl.polsl.courier.system.services;
 
-import pl.polsl.models.Client;
-import pl.polsl.views.ClientPost;
+import pl.polsl.courier.system.models.Client;
+import pl.polsl.courier.system.views.ClientPost;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

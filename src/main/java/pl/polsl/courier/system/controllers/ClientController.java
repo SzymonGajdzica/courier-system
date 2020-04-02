@@ -1,9 +1,9 @@
-package pl.polsl.controllers;
+package pl.polsl.courier.system.controllers;
 
-import pl.polsl.models.Client;
-import pl.polsl.services.ClientService;
-import pl.polsl.views.ClientPost;
-import pl.polsl.views.ClientView;
+import pl.polsl.courier.system.models.Client;
+import pl.polsl.courier.system.services.ClientService;
+import pl.polsl.courier.system.views.ClientPost;
+import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.EJB;
 import javax.ws.rs.POST;

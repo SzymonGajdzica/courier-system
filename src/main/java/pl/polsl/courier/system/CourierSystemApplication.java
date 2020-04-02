@@ -1,6 +1,6 @@
-package pl.polsl;
+package pl.polsl.courier.system;
 
-import pl.polsl.controllers.TestController;
+import pl.polsl.courier.system.controllers.TestController;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

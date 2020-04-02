@@ -1,6 +1,6 @@
-package pl.polsl.controllers;
+package pl.polsl.courier.system.controllers;
 
-import pl.polsl.views.TestView;
+import pl.polsl.courier.system.views.TestView;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,4 +1,4 @@
-package pl.polsl.views;
+package pl.polsl.courier.system.views;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +8,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @ToString
-public class ClientView {
-
-    @NonNull
-    private Long id;
+public class ClientPost {
 
     @NonNull
     private String name;
