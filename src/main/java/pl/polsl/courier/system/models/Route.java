@@ -1,11 +1,14 @@
 package pl.polsl.courier.system.models;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Table(name = "routes")
@@ -13,19 +16,18 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Data
 @NoArgsConstructor
-@ToString
 public class Route extends IdEntity {
 
     @Column(name = "start_date", nullable = false)
-    @NonNull
+    @NotNull
     private Date startDate = new Date();
 
     @Column(name = "start_latitude", nullable = false)
-    @NonNull
+    @NotNull
     private Double startLatitude;
 
     @Column(name = "start_longitude", nullable = false)
-    @NonNull
+    @NotNull
     private Double startLongitude;
 
     @Column(name = "end_latitude")
@@ -38,7 +40,7 @@ public class Route extends IdEntity {
     private Date endDate;
 
     @ManyToOne(optional = false)
-    @NonNull
+    @NotNull
     private Car car;
 
 }

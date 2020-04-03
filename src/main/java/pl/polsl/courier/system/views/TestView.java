@@ -2,18 +2,19 @@ package pl.polsl.courier.system.views;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.ToString;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
 @ToString
 public class TestView {
 
-    @NonNull
+    @NotNull
     private String title;
 
-    @NonNull
+    @NotNull
     private String description;
 
 }

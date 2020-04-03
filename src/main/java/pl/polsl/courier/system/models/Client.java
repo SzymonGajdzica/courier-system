@@ -1,11 +1,11 @@
 package pl.polsl.courier.system.models;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,27 +14,27 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Data
 @NoArgsConstructor
-@ToString
 public class Client extends IdEntity {
 
     @Column(name = "name", nullable = false)
-    @NonNull
+    @NotNull
     private String name;
 
     @Column(name = "second_name")
     private String secondName;
 
     @Column(name = "surname", nullable = false)
-    @NonNull
+    @NotNull
     private String surname;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "phone_number", nullable = false, unique = true)
+    @NotNull
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
     private List<Package> packages = new LinkedList<>();
 
 }

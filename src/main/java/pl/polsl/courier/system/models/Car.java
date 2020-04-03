@@ -1,11 +1,14 @@
 package pl.polsl.courier.system.models;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,27 +17,26 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Data
 @NoArgsConstructor
-@ToString
 public class Car extends IdEntity {
 
     @Column(name = "name", nullable = false)
-    @NonNull
+    @NotNull
     private String name;
 
     @Column(name = "available", nullable = false)
-    @NonNull
+    @NotNull
     private Boolean available = true;
 
     @Column(name = "in_use", nullable = false)
-    @NonNull
+    @NotNull
     private Boolean inUse = false;
 
     @Column(name = "latitude", nullable = false)
-    @NonNull
+    @NotNull
     private Double latitude;
 
     @Column(name = "longitude", nullable = false)
-    @NonNull
+    @NotNull
     private Double longitude;
 
     @OneToMany(mappedBy = "car")

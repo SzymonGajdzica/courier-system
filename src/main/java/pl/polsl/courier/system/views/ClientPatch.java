@@ -4,24 +4,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.NotNull;
-
 @Data
 @NoArgsConstructor
 @ToString
-public class ClientPost {
+public class ClientPatch {
 
-    @NotNull
     private String name;
 
     private String secondName;
 
-    @NotNull
     private String surname;
 
     private String email;
 
-    @NotNull
     private String phoneNumber;
 
 }
