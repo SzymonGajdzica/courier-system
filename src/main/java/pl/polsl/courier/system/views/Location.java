@@ -1,5 +1,6 @@
 package pl.polsl.courier.system.views;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -8,18 +9,14 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-public class ClientPost {
+public class Location {
 
     @NotNull
-    private String name;
+    private Double latitude;
 
     @NotNull
-    private String surname;
-
-    private String email;
-
-    @NotNull
-    private String phoneNumber;
+    private Double longitude;
 
 }

@@ -4,17 +4,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @NoArgsConstructor
 @ToString
-public class ClientPatch {
+public class PackageDeliveryPatch {
 
-    private String name;
-
-    private String surname;
-
-    private String email;
-
-    private String phoneNumber;
+    @NotNull
+    private Long carId;
 
 }

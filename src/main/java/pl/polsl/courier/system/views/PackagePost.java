@@ -9,17 +9,18 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @ToString
-public class ClientPost {
+public class PackagePost {
 
     @NotNull
     private String name;
 
     @NotNull
-    private String surname;
-
-    private String email;
+    private Long clientId;
 
     @NotNull
-    private String phoneNumber;
+    private Location registerLocation;
+
+    @NotNull
+    private Location deliveryLocation;
 
 }

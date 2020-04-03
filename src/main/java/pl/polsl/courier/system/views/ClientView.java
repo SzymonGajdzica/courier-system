@@ -17,8 +17,6 @@ public class ClientView {
     @NotNull
     private String name;
 
-    private String secondName;
-
     @NotNull
     private String surname;
 

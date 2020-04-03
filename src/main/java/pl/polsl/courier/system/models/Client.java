@@ -20,9 +20,6 @@ public class Client extends IdEntity {
     @NotNull
     private String name;
 
-    @Column(name = "second_name")
-    private String secondName;
-
     @Column(name = "surname", nullable = false)
     @NotNull
     private String surname;

@@ -22,9 +22,6 @@ public class Package extends IdEntity {
     @NotNull
     private String name;
 
-    @Column(name = "weight")
-    private Double weight;
-
     @ManyToOne(optional = false)
     @NotNull
     private Client client;
