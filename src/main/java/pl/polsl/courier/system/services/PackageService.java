@@ -1,21 +1,21 @@
 package pl.polsl.courier.system.services;
 
 import pl.polsl.courier.system.models.Package;
-import pl.polsl.courier.system.views.PackageDeliveryPatch;
-import pl.polsl.courier.system.views.PackagePost;
 
 import java.util.List;
 
 public interface PackageService {
 
-    Package createPackage(PackagePost packagePost);
+    Package createPackage(Package mPackage, Long clientId);
 
-    void deletePackage(Long packageId);
+    void deletePackage(Package mPackage);
 
     List<Package> getPackages();
 
-    Package startPackageDelivery(Long packageId, PackageDeliveryPatch packageDeliveryPatch);
+    Package getPackage(Long packageId);
 
-    Package deliverPackage(Long packageId);
+    Package startPackageDelivery(Package mPackage, Long carId);
+
+    Package deliverPackage(Package mPackage);
 
 }

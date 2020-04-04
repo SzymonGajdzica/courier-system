@@ -13,6 +13,9 @@ import java.util.Date;
 public class PackageView {
 
     @NotNull
+    private Long id;
+
+    @NotNull
     private String name;
 
     @NotNull

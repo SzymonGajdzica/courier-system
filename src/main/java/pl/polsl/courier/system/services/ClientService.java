@@ -1,18 +1,18 @@
 package pl.polsl.courier.system.services;
 
 import pl.polsl.courier.system.models.Client;
-import pl.polsl.courier.system.views.ClientPatch;
-import pl.polsl.courier.system.views.ClientPost;
 
 import java.util.List;
 
 public interface ClientService {
 
-    Client createClient(ClientPost clientPost);
+    Client createClient(Client client);
 
-    Client patchClient(Long clientId, ClientPatch clientPatch);
+    Client patchClient(Client client);
 
-    void deleteClient(Long clientId);
+    void deleteClient(Client client);
+
+    Client getClient(Long clientId);
 
     List<Client> getClients();
 
