@@ -2,10 +2,14 @@ package pl.polsl.courier.system.services;
 
 import pl.polsl.courier.system.exceptions.FieldAlreadyUsedException;
 import pl.polsl.courier.system.models.Client;
+import pl.polsl.courier.system.views.ClientPatch;
+import pl.polsl.courier.system.views.ClientPost;
+import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateful
 public class ClientServiceImpl implements ClientService {
@@ -13,17 +17,23 @@ public class ClientServiceImpl implements ClientService {
     @EJB
     private EntityManagerHelper entityManagerHelper;
 
+    @EJB
+    private CustomModelMapper modelMapper;
+
     @Override
-    public Client createClient(Client client) {
-        checkPhoneNumber(client.getPhoneNumber());
+    public ClientView createClient(ClientPost clientPost) {
+        checkPhoneNumber(clientPost.getPhoneNumber());
+        Client client = modelMapper.map(clientPost, Client.class);
         entityManagerHelper.getEntityManager().persist(client);
-        return client;
+        return modelMapper.map(client, ClientView.class);
     }
 
     @Override
-    public Client patchClient(Client client) {
-        checkPhoneNumber(client.getPhoneNumber());
-        return entityManagerHelper.getEntityManager().merge(client);
+    public ClientView patchClient(Long clientId, ClientPatch clientPatch) {
+        checkPhoneNumber(clientPatch.getPhoneNumber());
+        Client client = entityManagerHelper.getOne(Client.class, clientId);
+        modelMapper.map(clientPatch, client);
+        return modelMapper.map(entityManagerHelper.getEntityManager().merge(client), ClientView.class);
     }
 
     private void checkPhoneNumber(String phoneNumber) {
@@ -40,18 +50,20 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Client client) {
-        entityManagerHelper.getEntityManager().remove(client);
+    public void deleteClient(Long clientId) {
+        entityManagerHelper.removeById(Client.class, clientId);
     }
 
     @Override
-    public Client getClient(Long clientId) {
-        return entityManagerHelper.find(Client.class, clientId);
+    public ClientView getClient(Long clientId) {
+        Client client = entityManagerHelper.getOne(Client.class, clientId);
+        return modelMapper.map(client, ClientView.class);
     }
 
     @Override
-    public List<Client> getClients() {
-        return entityManagerHelper.findAll(Client.class);
+    public List<ClientView> getClients() {
+        List<Client> clients = entityManagerHelper.findAll(Client.class);
+        return clients.stream().map(client -> modelMapper.map(client, ClientView.class)).collect(Collectors.toList());
     }
 
 }

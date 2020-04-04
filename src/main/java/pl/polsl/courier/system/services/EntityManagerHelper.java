@@ -13,7 +13,7 @@ public class EntityManagerHelper {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public <T> T find(Class<T> entityClass, Long primaryKey) {
+    public <T> T getOne(Class<T> entityClass, Long primaryKey) {
         T object = entityManager.find(entityClass, primaryKey);
         if (object == null)
             throw new NotFoundException(entityClass.getSimpleName() + "  with id " + primaryKey + " does not exists");
@@ -27,5 +27,9 @@ public class EntityManagerHelper {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public <T> void removeById(Class<T> entityClass, Long primaryKey) {
+        entityManager.remove(getOne(entityClass, primaryKey));
     }
 }
