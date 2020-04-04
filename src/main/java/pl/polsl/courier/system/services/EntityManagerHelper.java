@@ -1,10 +1,11 @@
 package pl.polsl.courier.system.services;
 
+import pl.polsl.courier.system.exceptions.NotFoundException;
+
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 @Stateful
@@ -16,7 +17,7 @@ public class EntityManagerHelper {
     public <T> T getOne(Class<T> entityClass, Long primaryKey) {
         T object = entityManager.find(entityClass, primaryKey);
         if (object == null)
-            throw new NotFoundException(entityClass.getSimpleName() + "  with id " + primaryKey + " does not exists");
+            throw new NotFoundException(entityClass, primaryKey);
         return object;
     }
 

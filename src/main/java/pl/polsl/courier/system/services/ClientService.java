@@ -4,6 +4,7 @@ import pl.polsl.courier.system.views.ClientPatch;
 import pl.polsl.courier.system.views.ClientPost;
 import pl.polsl.courier.system.views.ClientView;
 
+import javax.ws.rs.WebApplicationException;
 import java.util.List;
 
 public interface ClientService {
@@ -16,6 +17,6 @@ public interface ClientService {
 
     ClientView getClient(Long clientId);
 
-    List<ClientView> getClients();
+    List<ClientView> getClients() throws WebApplicationException;
 
 }

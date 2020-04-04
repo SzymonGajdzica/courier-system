@@ -25,9 +25,6 @@ public class ErrorMessage {
     private Integer status;
 
     @NotNull
-    private String error;
-
-    @NotNull
     private String message;
 
     @NotNull

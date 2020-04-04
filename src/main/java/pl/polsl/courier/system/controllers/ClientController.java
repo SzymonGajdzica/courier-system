@@ -6,6 +6,8 @@ import pl.polsl.courier.system.views.ClientPost;
 import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.EJB;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -19,7 +21,7 @@ public class ClientController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ClientView createClient(ClientPost clientPost) {
+    public ClientView createClient(@Valid @NotNull ClientPost clientPost) {
         return clientService.createClient(clientPost);
     }
 
@@ -27,7 +29,7 @@ public class ClientController {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ClientView patchClient(@PathParam("clientId") Long clientId, ClientPatch clientPatch) {
+    public ClientView patchClient(@PathParam("clientId") Long clientId, @Valid @NotNull ClientPatch clientPatch) {
         return clientService.patchClient(clientId, clientPatch);
     }
 

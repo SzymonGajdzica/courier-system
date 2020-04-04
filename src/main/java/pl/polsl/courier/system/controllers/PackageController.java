@@ -6,6 +6,8 @@ import pl.polsl.courier.system.views.PackagePost;
 import pl.polsl.courier.system.views.PackageView;
 
 import javax.ejb.EJB;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -19,7 +21,7 @@ public class PackageController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PackageView createPackage(PackagePost packagePost) {
+    public PackageView createPackage(@Valid @NotNull PackagePost packagePost) {
         return packageService.createPackage(packagePost);
     }
 
@@ -42,7 +44,7 @@ public class PackageController {
         return packageService.getPackage(packageId);
     }
 
-    @Path("/{packageId}")
+    @Path("/deliver/{packageId}")
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -50,12 +52,12 @@ public class PackageController {
         return packageService.deliverPackage(packageId);
     }
 
-    @Path("/{packageId}")
+    @Path("/start_delivery/{packageId}")
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PackageView startOfPackageDelivery(@PathParam("packageId") Long packageId,
-                                              PackageDeliveryPatch packageDeliveryPatch) {
+                                              @Valid @NotNull PackageDeliveryPatch packageDeliveryPatch) {
         return packageService.startPackageDelivery(packageId, packageDeliveryPatch);
     }
 
