@@ -32,6 +32,9 @@ public class RouteServiceImpl implements RouteService {
             throw new BadRequestException("Cannot start new route when old is still in progress");
         route.setCar(car);
         entityManagerHelper.getEntityManager().persist(route);
+        car.setLatitude(routePost.getStartLatLng().getLatitude());
+        car.setLongitude(routePost.getStartLatLng().getLongitude());
+        entityManagerHelper.getEntityManager().merge(car);
         return routeMapper.map(route);
     }
 
@@ -41,6 +44,10 @@ public class RouteServiceImpl implements RouteService {
         if (route.getEndDate() != null)
             throw new BadRequestException("Cannot finish already finished route");
         routeMapper.map(routeFinishPatch, route);
+        Car car = route.getCar();
+        car.setLatitude(routeFinishPatch.getEndLatLng().getLatitude());
+        car.setLongitude(routeFinishPatch.getEndLatLng().getLongitude());
+        entityManagerHelper.getEntityManager().merge(car);
         return routeMapper.map(entityManagerHelper.getEntityManager().merge(route));
     }
 
