@@ -10,20 +10,10 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @ToString
-public class PackagePost {
-
-    @NotNull
-    private String name;
-
-    @NotNull
-    private Long clientId;
+public class RouteFinishPatch {
 
     @Valid
     @NotNull
-    private LatLng registerLatLng;
-
-    @Valid
-    @NotNull
-    private LatLng deliveryLatLng;
+    private LatLng endLatLng;
 
 }

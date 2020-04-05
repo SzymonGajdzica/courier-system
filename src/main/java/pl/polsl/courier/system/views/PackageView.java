@@ -24,10 +24,10 @@ public class PackageView {
     private Long carId;
 
     @NotNull
-    private Location registerLocation;
+    private LatLng registerLatLng;
 
     @NotNull
-    private Location deliveryLocation;
+    private LatLng deliveryLatLng;
 
     @NotNull
     private Date registerDate;

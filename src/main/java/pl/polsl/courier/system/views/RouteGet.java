@@ -4,26 +4,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @ToString
-public class PackagePost {
+public class RouteGet {
 
     @NotNull
-    private String name;
+    private Date startDate;
 
     @NotNull
-    private Long clientId;
+    private LatLng startLatLng;
 
-    @Valid
-    @NotNull
-    private LatLng registerLatLng;
+    private LatLng endLatLng;
 
-    @Valid
+    private Date endDate;
+
     @NotNull
-    private LatLng deliveryLatLng;
+    private Long carId;
 
 }

@@ -42,4 +42,7 @@ public class Car extends IdEntity {
     @OneToMany(mappedBy = "car")
     private List<Package> packages = new LinkedList<>();
 
+    @OneToMany(mappedBy = "car")
+    private List<Route> routes = new LinkedList<>();
+
 }

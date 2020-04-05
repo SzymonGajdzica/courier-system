@@ -1,5 +1,6 @@
 package pl.polsl.courier.system.services;
 
+import pl.polsl.courier.system.mappers.PackageMapper;
 import pl.polsl.courier.system.models.Car;
 import pl.polsl.courier.system.models.Client;
 import pl.polsl.courier.system.models.Package;
@@ -21,14 +22,14 @@ public class PackageServiceImpl implements PackageService {
     private EntityManagerHelper entityManagerHelper;
 
     @EJB
-    private CustomModelMapper modelMapper;
+    private PackageMapper packageMapper;
 
     @Override
     public PackageView createPackage(PackagePost packagePost) {
-        Package mPackage = modelMapper.map(packagePost, Package.class);
+        Package mPackage = packageMapper.map(packagePost);
         mPackage.setClient(entityManagerHelper.getOne(Client.class, packagePost.getClientId()));
         entityManagerHelper.getEntityManager().persist(mPackage);
-        return modelMapper.map(mPackage, PackageView.class);
+        return packageMapper.map(mPackage);
     }
 
     @Override
@@ -39,13 +40,13 @@ public class PackageServiceImpl implements PackageService {
     @Override
     public List<PackageView> getPackages() {
         List<Package> packages = entityManagerHelper.findAll(Package.class);
-        return packages.stream().map(mPackage -> modelMapper.map(mPackage, PackageView.class)).collect(Collectors.toList());
+        return packages.stream().map(mPackage -> packageMapper.map(mPackage)).collect(Collectors.toList());
     }
 
     @Override
     public PackageView getPackage(Long packageId) {
         Package mPackage = entityManagerHelper.getOne(Package.class, packageId);
-        return modelMapper.map(mPackage, PackageView.class);
+        return packageMapper.map(mPackage);
     }
 
     @Override
@@ -58,7 +59,7 @@ public class PackageServiceImpl implements PackageService {
         mPackage.setStartOfDeliveryDate(new Date());
         mPackage.setCar(entityManagerHelper.getOne(Car.class, packageDeliveryPatch.getCarId()));
         entityManagerHelper.getEntityManager().merge(mPackage);
-        return modelMapper.map(mPackage, PackageView.class);
+        return packageMapper.map(mPackage);
     }
 
     @Override
@@ -70,6 +71,6 @@ public class PackageServiceImpl implements PackageService {
             throw new BadRequestException("Cannot deliver package when car is not assigned to it");
         mPackage.setDeliveryDate(new Date());
         entityManagerHelper.getEntityManager().merge(mPackage);
-        return modelMapper.map(mPackage, PackageView.class);
+        return packageMapper.map(mPackage);
     }
 }

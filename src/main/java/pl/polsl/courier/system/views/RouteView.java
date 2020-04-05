@@ -19,11 +19,11 @@ public class RouteView {
     private Date startDate;
 
     @NotNull
-    private Location startLocation;
+    private LatLng startLatLng;
 
     private Date endDate;
 
-    private Location endLocation;
+    private LatLng endLatLng;
 
     private Long carId;
 
