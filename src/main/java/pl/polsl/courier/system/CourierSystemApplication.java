@@ -20,7 +20,7 @@ public class CourierSystemApplication extends Application {
             assert classLoader != null;
             String path = controllersPackageName.replace('.', '/');
             Enumeration<URL> resources = classLoader.getResources(path);
-            List<File> dirs = new ArrayList<>();
+            List<File> dirs = new LinkedList<>();
             while (resources.hasMoreElements()) {
                 URL resource = resources.nextElement();
                 dirs.add(new File(resource.getFile()));
@@ -35,7 +35,7 @@ public class CourierSystemApplication extends Application {
     }
 
     private List<Class<?>> findClasses(File directory, String packageName) throws ClassNotFoundException {
-        List<Class<?>> classes = new ArrayList<>();
+        List<Class<?>> classes = new LinkedList<>();
         if (!directory.exists())
             return classes;
         File[] files = directory.listFiles();

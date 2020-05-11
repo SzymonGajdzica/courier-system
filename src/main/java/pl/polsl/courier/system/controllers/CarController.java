@@ -29,7 +29,7 @@ public class CarController {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CarView finishCar(@PathParam("carId") Long carId, @Valid @NotNull CarPatch carPatch) {
+    public CarView updateCar(@PathParam("carId") Long carId, @Valid @NotNull CarPatch carPatch) {
         return carService.patchCar(carId, carPatch);
     }
 

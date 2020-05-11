@@ -27,7 +27,7 @@ public class PackageController {
 
     @Path("/{packageId}")
     @DELETE
-    public void deleteClient(@PathParam("packageId") Long packageId) {
+    public void deletePackage(@PathParam("packageId") Long packageId) {
         packageService.deletePackage(packageId);
     }
 
@@ -60,6 +60,5 @@ public class PackageController {
                                               @Valid @NotNull PackageDeliveryPatch packageDeliveryPatch) {
         return packageService.startPackageDelivery(packageId, packageDeliveryPatch);
     }
-
 
 }

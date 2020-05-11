@@ -35,7 +35,7 @@ public class CarServiceImpl implements CarService {
             throw new BadRequestException("Cannot use car that is already in use");
         carMapper.map(carPatch, car);
         if (!car.getAvailable() && car.getInUse())
-            throw new BadRequestException("Cannot user not available car");
+            throw new BadRequestException("Cannot use not available car");
         return carMapper.map(entityManagerHelper.getEntityManager().merge(car));
     }
 
