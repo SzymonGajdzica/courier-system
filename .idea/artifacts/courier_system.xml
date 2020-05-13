@@ -1,22 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="courier-system">
-    <output-path>$PROJECT_DIR$/out/artifacts/courier-system.war</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="courier-system/web/Web" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="courier-system" />
-          <element id="jpa-descriptors" facet="courier-system/jpa/JPA" />
-        </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
-          <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.1.1" />
-          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.12" />
-          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.12" />
-          <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
-          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:2.3.0" />
-        </element>
-      </element>
+  <artifact type="war" name="courier-system">
+    <output-path>$PROJECT_DIR$/out/artifacts/courier_system</output-path>
+    <root id="archive" name="courier-system.war">
+      <element id="artifact" artifact-name="courier-system-exploded" />
     </root>
   </artifact>
 </component>
