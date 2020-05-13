@@ -3,12 +3,13 @@ package pl.polsl.courier.system.services;
 import pl.polsl.courier.system.exceptions.FieldAlreadyUsedException;
 import pl.polsl.courier.system.mappers.ClientMapper;
 import pl.polsl.courier.system.models.Client;
+import pl.polsl.courier.system.views.ClientGet;
 import pl.polsl.courier.system.views.ClientPatch;
 import pl.polsl.courier.system.views.ClientPost;
-import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,29 +23,28 @@ public class ClientServiceImpl implements ClientService {
     private ClientMapper clientMapper;
 
     @Override
-    public ClientView createClient(ClientPost clientPost) {
+    public ClientGet createClient(ClientPost clientPost) {
         checkPhoneNumber(clientPost.getPhoneNumber());
         Client client = clientMapper.map(clientPost);
-        entityManagerHelper.getEntityManager().persist(client);
-        return clientMapper.map(client);
+        return clientMapper.map(entityManagerHelper.persist(client));
     }
 
     @Override
-    public ClientView patchClient(Long clientId, ClientPatch clientPatch) {
+    public ClientGet patchClient(Long clientId, ClientPatch clientPatch) {
         checkPhoneNumber(clientPatch.getPhoneNumber());
         Client client = entityManagerHelper.getOne(Client.class, clientId);
         clientMapper.map(clientPatch, client);
-        return clientMapper.map(entityManagerHelper.getEntityManager().merge(client));
+        return clientMapper.map(entityManagerHelper.merge(client));
     }
 
     private void checkPhoneNumber(String phoneNumber) {
         if (phoneNumber != null) {
-            int size = (int) entityManagerHelper
+            BigInteger size = (BigInteger) entityManagerHelper
                     .getEntityManager()
                     .createNativeQuery("SELECT count(*) FROM clients WHERE phone_number = ?1")
                     .setParameter(1, phoneNumber)
                     .getSingleResult();
-            if (size != 0)
+            if (size.longValue() != 0)
                 throw new FieldAlreadyUsedException("phoneNumber", phoneNumber);
         }
     }
@@ -55,13 +55,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientView getClient(Long clientId) {
-        Client client = entityManagerHelper.getOne(Client.class, clientId);
-        return clientMapper.map(client);
+    public ClientGet getClient(Long clientId) {
+        return clientMapper.map(entityManagerHelper.getOne(Client.class, clientId));
     }
 
     @Override
-    public List<ClientView> getClients() {
+    public List<ClientGet> getClients() {
         List<Client> clients = entityManagerHelper.findAll(Client.class);
         return clients.stream().map(client -> clientMapper.map(client)).collect(Collectors.toList());
     }

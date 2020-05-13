@@ -5,12 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Table(name = "routes")
 @Entity
@@ -20,29 +20,13 @@ import java.util.Date;
 @ToString
 public class Route extends IdEntity {
 
-    @Column(name = "start_date", nullable = false)
-    @NotNull
-    private Date startDate = new Date();
+    @ManyToOne
+    private Place startPlace;
 
-    @Column(name = "start_latitude", nullable = false)
-    @NotNull
-    private Double startLatitude;
+    @ManyToOne
+    private Place endPlace;
 
-    @Column(name = "start_longitude", nullable = false)
-    @NotNull
-    private Double startLongitude;
-
-    @Column(name = "end_latitude")
-    private Double endLatitude;
-
-    @Column(name = "end_longitude")
-    private Double endLongitude;
-
-    @Column(name = "end_date")
-    private Date endDate;
-
-    @ManyToOne(optional = false)
-    @NotNull
-    private Car car;
+    @OneToMany(mappedBy = "route")
+    private List<Package> packages = new LinkedList<>();
 
 }

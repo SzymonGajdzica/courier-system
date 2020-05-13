@@ -16,8 +16,6 @@ public class CarPatch {
     @Valid
     private LatLng latLng;
 
-    private Boolean available;
-
     private Boolean inUse;
 
 }

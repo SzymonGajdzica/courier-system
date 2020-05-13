@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -13,16 +12,12 @@ import java.util.Date;
 public class RouteGet {
 
     @NotNull
-    private Date startDate;
+    private Long id;
 
     @NotNull
-    private LatLng startLatLng;
-
-    private LatLng endLatLng;
-
-    private Date endDate;
+    private Long startPlaceId;
 
     @NotNull
-    private Long carId;
+    private Long endPlaceId;
 
 }

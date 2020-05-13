@@ -1,9 +1,9 @@
 package pl.polsl.courier.system.mappers;
 
 import pl.polsl.courier.system.models.Car;
+import pl.polsl.courier.system.views.CarGet;
 import pl.polsl.courier.system.views.CarPatch;
 import pl.polsl.courier.system.views.CarPost;
-import pl.polsl.courier.system.views.CarView;
 import pl.polsl.courier.system.views.LatLng;
 
 import javax.ejb.Stateful;
@@ -21,20 +21,17 @@ public class CarMapperImpl implements CarMapper {
     }
 
     @Override
-    public CarView map(Car car) {
-        CarView carView = new CarView();
-        carView.setAvailable(car.getAvailable());
-        carView.setInUse(car.getInUse());
-        carView.setId(car.getId());
-        carView.setName(car.getName());
-        carView.setLatLng(new LatLng(car.getLatitude(), car.getLongitude()));
-        return carView;
+    public CarGet map(Car car) {
+        CarGet carGet = new CarGet();
+        carGet.setId(car.getId());
+        carGet.setInUse(car.getInUse());
+        carGet.setName(car.getName());
+        carGet.setLatLng(new LatLng(car.getLatitude(), car.getLongitude()));
+        return carGet;
     }
 
     @Override
     public void map(CarPatch carPatch, Car car) {
-        if (carPatch.getAvailable() != null)
-            car.setAvailable(carPatch.getAvailable());
         if (carPatch.getInUse() != null)
             car.setInUse(carPatch.getInUse());
         if (carPatch.getLatLng() != null) {

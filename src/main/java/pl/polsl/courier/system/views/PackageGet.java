@@ -10,21 +10,27 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @ToString
-public class RouteView {
+public class PackageGet {
 
     @NotNull
     private Long id;
 
     @NotNull
-    private Date startDate;
+    private String name;
 
     @NotNull
-    private LatLng startLatLng;
-
-    private Date endDate;
-
-    private LatLng endLatLng;
+    private Long clientId;
 
     private Long carId;
+
+    @NotNull
+    private Long routeId;
+
+    @NotNull
+    private Date registerDate;
+
+    private Date startOfDeliveryDate;
+
+    private Date deliveryDate;
 
 }

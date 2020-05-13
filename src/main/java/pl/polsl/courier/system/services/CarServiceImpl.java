@@ -3,9 +3,9 @@ package pl.polsl.courier.system.services;
 import pl.polsl.courier.system.exceptions.BadRequestException;
 import pl.polsl.courier.system.mappers.CarMapper;
 import pl.polsl.courier.system.models.Car;
+import pl.polsl.courier.system.views.CarGet;
 import pl.polsl.courier.system.views.CarPatch;
 import pl.polsl.courier.system.views.CarPost;
-import pl.polsl.courier.system.views.CarView;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -22,31 +22,22 @@ public class CarServiceImpl implements CarService {
     private CarMapper carMapper;
 
     @Override
-    public CarView createCar(CarPost carPost) {
+    public CarGet createCar(CarPost carPost) {
         Car car = carMapper.map(carPost);
-        entityManagerHelper.getEntityManager().persist(car);
-        return carMapper.map(car);
+        return carMapper.map(entityManagerHelper.persist(car));
     }
 
     @Override
-    public CarView patchCar(Long carId, CarPatch carPatch) {
+    public CarGet patchCar(Long carId, CarPatch carPatch) {
         Car car = entityManagerHelper.getOne(Car.class, carId);
-        if (car.getInUse() && carPatch.getInUse() != null && carPatch.getInUse())
+        if (car.getInUse() && carPatch.getInUse() == true)
             throw new BadRequestException("Cannot use car that is already in use");
         carMapper.map(carPatch, car);
-        if (!car.getAvailable() && car.getInUse())
-            throw new BadRequestException("Cannot use not available car");
         return carMapper.map(entityManagerHelper.getEntityManager().merge(car));
     }
 
     @Override
-    public CarView getCar(Long carId) {
-        Car car = entityManagerHelper.getOne(Car.class, carId);
-        return carMapper.map(car);
-    }
-
-    @Override
-    public List<CarView> getCars() {
+    public List<CarGet> getCars() {
         List<Car> cars = entityManagerHelper.findAll(Car.class);
         return cars.stream().map(car -> carMapper.map(car)).collect(Collectors.toList());
     }

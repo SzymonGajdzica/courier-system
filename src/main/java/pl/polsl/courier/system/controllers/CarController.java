@@ -1,9 +1,9 @@
 package pl.polsl.courier.system.controllers;
 
 import pl.polsl.courier.system.services.CarService;
+import pl.polsl.courier.system.views.CarGet;
 import pl.polsl.courier.system.views.CarPatch;
 import pl.polsl.courier.system.views.CarPost;
-import pl.polsl.courier.system.views.CarView;
 
 import javax.ejb.EJB;
 import javax.validation.Valid;
@@ -21,7 +21,7 @@ public class CarController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CarView createCar(@Valid @NotNull CarPost CarPost) {
+    public CarGet createCar(@Valid @NotNull CarPost CarPost) {
         return carService.createCar(CarPost);
     }
 
@@ -29,7 +29,7 @@ public class CarController {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CarView updateCar(@PathParam("carId") Long carId, @Valid @NotNull CarPatch carPatch) {
+    public CarGet updateCar(@PathParam("carId") Long carId, @Valid @NotNull CarPatch carPatch) {
         return carService.patchCar(carId, carPatch);
     }
 
@@ -41,15 +41,8 @@ public class CarController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CarView> getCars() {
+    public List<CarGet> getCars() {
         return carService.getCars();
-    }
-
-    @Path("/{carId}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public CarView getCar(@PathParam("carId") Long CarId) {
-        return carService.getCar(CarId);
     }
 
 }

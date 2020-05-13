@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -12,11 +11,10 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class RoutePost {
 
-    @Valid
     @NotNull
-    private LatLng startLatLng;
+    private Long startPlaceId;
 
     @NotNull
-    private Long carId;
+    private Long endPlaceId;
 
 }

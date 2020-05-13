@@ -33,4 +33,14 @@ public class EntityManagerHelper {
     public <T> void removeById(Class<T> entityClass, Long primaryKey) {
         entityManager.remove(getOne(entityClass, primaryKey));
     }
+
+    public <T> T persist(T entity) {
+        entityManager.persist(entity);
+        return entity;
+    }
+
+    public <T> T merge(T entity) {
+        return entityManager.merge(entity);
+    }
+
 }

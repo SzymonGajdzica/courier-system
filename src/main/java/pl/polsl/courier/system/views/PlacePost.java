@@ -4,25 +4,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
 @ToString
-public class CarView {
-
-    @NotNull
-    private Long id;
+public class PlacePost {
 
     @NotNull
     private String name;
 
-    @NotNull
-    private Boolean available;
-
-    @NotNull
-    private Boolean inUse;
-
+    @Valid
     @NotNull
     private LatLng latLng;
 

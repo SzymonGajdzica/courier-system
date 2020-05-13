@@ -1,9 +1,9 @@
 package pl.polsl.courier.system.mappers;
 
 import pl.polsl.courier.system.models.Client;
+import pl.polsl.courier.system.views.ClientGet;
 import pl.polsl.courier.system.views.ClientPatch;
 import pl.polsl.courier.system.views.ClientPost;
-import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.Stateful;
 
@@ -21,8 +21,8 @@ public class ClientMapperImpl implements ClientMapper {
     }
 
     @Override
-    public ClientView map(Client client) {
-        ClientView clientView = new ClientView();
+    public ClientGet map(Client client) {
+        ClientGet clientView = new ClientGet();
         clientView.setSurname(client.getSurname());
         clientView.setPhoneNumber(client.getPhoneNumber());
         clientView.setEmail(client.getEmail());

@@ -1,9 +1,9 @@
 package pl.polsl.courier.system.controllers;
 
 import pl.polsl.courier.system.services.ClientService;
+import pl.polsl.courier.system.views.ClientGet;
 import pl.polsl.courier.system.views.ClientPatch;
 import pl.polsl.courier.system.views.ClientPost;
-import pl.polsl.courier.system.views.ClientView;
 
 import javax.ejb.EJB;
 import javax.validation.Valid;
@@ -21,7 +21,7 @@ public class ClientController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ClientView createClient(@Valid @NotNull ClientPost clientPost) {
+    public ClientGet createClient(@Valid @NotNull ClientPost clientPost) {
         return clientService.createClient(clientPost);
     }
 
@@ -29,7 +29,7 @@ public class ClientController {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ClientView patchClient(@PathParam("clientId") Long clientId, @Valid @NotNull ClientPatch clientPatch) {
+    public ClientGet patchClient(@PathParam("clientId") Long clientId, @Valid @NotNull ClientPatch clientPatch) {
         return clientService.patchClient(clientId, clientPatch);
     }
 
@@ -41,14 +41,14 @@ public class ClientController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ClientView> getClients() {
+    public List<ClientGet> getClients() {
         return clientService.getClients();
     }
 
     @Path("/{clientId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ClientView getClient(@PathParam("clientId") Long clientId) {
+    public ClientGet getClient(@PathParam("clientId") Long clientId) {
         return clientService.getClient(clientId);
     }
 

@@ -2,8 +2,8 @@ package pl.polsl.courier.system.controllers;
 
 import pl.polsl.courier.system.services.PackageService;
 import pl.polsl.courier.system.views.PackageDeliveryPatch;
+import pl.polsl.courier.system.views.PackageGet;
 import pl.polsl.courier.system.views.PackagePost;
-import pl.polsl.courier.system.views.PackageView;
 
 import javax.ejb.EJB;
 import javax.validation.Valid;
@@ -21,7 +21,7 @@ public class PackageController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PackageView createPackage(@Valid @NotNull PackagePost packagePost) {
+    public PackageGet createPackage(@Valid @NotNull PackagePost packagePost) {
         return packageService.createPackage(packagePost);
     }
 
@@ -33,22 +33,15 @@ public class PackageController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PackageView> getPackages() {
+    public List<PackageGet> getPackages() {
         return packageService.getPackages();
-    }
-
-    @Path("/{packageId}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public PackageView getPackage(@PathParam("packageId") Long packageId) {
-        return packageService.getPackage(packageId);
     }
 
     @Path("/deliver/{packageId}")
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PackageView deliverPackage(@PathParam("packageId") Long packageId) {
+    public PackageGet deliverPackage(@PathParam("packageId") Long packageId) {
         return packageService.deliverPackage(packageId);
     }
 
@@ -56,8 +49,8 @@ public class PackageController {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PackageView startOfPackageDelivery(@PathParam("packageId") Long packageId,
-                                              @Valid @NotNull PackageDeliveryPatch packageDeliveryPatch) {
+    public PackageGet startOfPackageDelivery(@PathParam("packageId") Long packageId,
+                                             @Valid @NotNull PackageDeliveryPatch packageDeliveryPatch) {
         return packageService.startPackageDelivery(packageId, packageDeliveryPatch);
     }
 

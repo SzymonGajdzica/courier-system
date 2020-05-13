@@ -1,20 +1,18 @@
 package pl.polsl.courier.system.services;
 
+import pl.polsl.courier.system.views.CarGet;
 import pl.polsl.courier.system.views.CarPatch;
 import pl.polsl.courier.system.views.CarPost;
-import pl.polsl.courier.system.views.CarView;
 
 import java.util.List;
 
 public interface CarService {
 
-    CarView createCar(CarPost carPost);
+    CarGet createCar(CarPost carPost);
 
-    CarView patchCar(Long carId, CarPatch carPatch);
+    CarGet patchCar(Long carId, CarPatch carPatch);
 
-    CarView getCar(Long carId);
-
-    List<CarView> getCars();
+    List<CarGet> getCars();
 
     void deleteCar(Long carId);
 

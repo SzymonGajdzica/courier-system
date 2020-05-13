@@ -5,12 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @ToString
-public class PackageView {
+public class ClientGet {
 
     @NotNull
     private Long id;
@@ -19,21 +18,11 @@ public class PackageView {
     private String name;
 
     @NotNull
-    private Long clientId;
+    private String surname;
 
-    private Long carId;
-
-    @NotNull
-    private LatLng registerLatLng;
+    private String email;
 
     @NotNull
-    private LatLng deliveryLatLng;
-
-    @NotNull
-    private Date registerDate;
-
-    private Date startOfDeliveryDate;
-
-    private Date deliveryDate;
+    private String phoneNumber;
 
 }

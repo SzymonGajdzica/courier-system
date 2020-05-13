@@ -1,22 +1,21 @@
 package pl.polsl.courier.system.services;
 
+import pl.polsl.courier.system.views.ClientGet;
 import pl.polsl.courier.system.views.ClientPatch;
 import pl.polsl.courier.system.views.ClientPost;
-import pl.polsl.courier.system.views.ClientView;
 
-import javax.ws.rs.WebApplicationException;
 import java.util.List;
 
 public interface ClientService {
 
-    ClientView createClient(ClientPost clientPost);
+    ClientGet createClient(ClientPost clientPost);
 
-    ClientView patchClient(Long clientId, ClientPatch clientPatch);
+    ClientGet patchClient(Long clientId, ClientPatch clientPatch);
 
     void deleteClient(Long clientId);
 
-    ClientView getClient(Long clientId);
+    ClientGet getClient(Long clientId);
 
-    List<ClientView> getClients() throws WebApplicationException;
+    List<ClientGet> getClients();
 
 }

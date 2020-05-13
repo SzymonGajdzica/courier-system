@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @ToString
-public class ClientView {
+public class CarGet {
 
     @NotNull
     private Long id;
@@ -18,11 +18,9 @@ public class ClientView {
     private String name;
 
     @NotNull
-    private String surname;
-
-    private String email;
+    private Boolean inUse;
 
     @NotNull
-    private String phoneNumber;
+    private LatLng latLng;
 
 }

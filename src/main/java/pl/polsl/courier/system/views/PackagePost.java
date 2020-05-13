@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -18,12 +17,7 @@ public class PackagePost {
     @NotNull
     private Long clientId;
 
-    @Valid
     @NotNull
-    private LatLng registerLatLng;
-
-    @Valid
-    @NotNull
-    private LatLng deliveryLatLng;
+    private Long routeId;
 
 }

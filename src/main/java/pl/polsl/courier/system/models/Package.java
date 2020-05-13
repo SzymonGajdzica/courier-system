@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -26,16 +23,12 @@ public class Package extends IdEntity {
     @NotNull
     private Client client;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Car car;
 
-    @Column(name = "register_latitude", nullable = false)
+    @ManyToOne(optional = false)
     @NotNull
-    private Double registerLatitude;
-
-    @Column(name = "register_longitude", nullable = false)
-    @NotNull
-    private Double registerLongitude;
+    private Route route;
 
     @Column(name = "register_date", nullable = false)
     @NotNull
@@ -43,14 +36,6 @@ public class Package extends IdEntity {
 
     @Column(name = "start_of_delivery_date")
     private Date startOfDeliveryDate;
-
-    @Column(name = "delivery_latitude", nullable = false)
-    @NotNull
-    private Double deliveryLatitude;
-
-    @Column(name = "delivery_longitude", nullable = false)
-    @NotNull
-    private Double deliveryLongitude;
 
     @Column(name = "delivery_date")
     private Date deliveryDate;
