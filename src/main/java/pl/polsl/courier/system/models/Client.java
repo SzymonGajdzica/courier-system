@@ -4,7 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class Client extends IdEntity {
     @NotNull
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.DETACH)
+    @OneToMany(mappedBy = "client")
     @NotNull
     private List<Package> packages = new LinkedList<>();
 
